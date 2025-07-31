@@ -13,7 +13,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // CSRF 비활성화
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/error").permitAll() // 로그인은 누구나 접근 가능
+                        .requestMatchers("/api/auth/**","/api/stampboards/**", "/error", "/api/stampboards").permitAll() // 로그인은 누구나 접근 가능
                         .anyRequest().authenticated() // 그 외는 인증 필요
                 )
                 .formLogin(login -> login.disable()) // 기본 로그인 폼 비활성화
@@ -21,4 +21,5 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 }
